@@ -4,6 +4,7 @@ A production-style dbt project that models the raw output of [**ARIA**](https://
 
 This repo takes ARIA's raw pipeline output and shapes it into a **dimensionally-modeled analytical warehouse** suitable for BI consumption.
 
+[![CI](https://github.com/rosalinatorres888/aria-dbt/actions/workflows/ci.yml/badge.svg)](https://github.com/rosalinatorres888/aria-dbt/actions/workflows/ci.yml)
 [![dbt](https://img.shields.io/badge/dbt-1.11-FF694B?logo=dbt&logoColor=white)](https://docs.getdbt.com/)
 [![DuckDB](https://img.shields.io/badge/DuckDB-local-FFF000?logo=duckdb&logoColor=black)](https://duckdb.org/)
 [![tests](https://img.shields.io/badge/tests-46_passing-success)](#testing-strategy)
