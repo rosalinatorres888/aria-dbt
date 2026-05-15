@@ -1,0 +1,6 @@
+source_code,source_name,source_type,is_api_based,base_url
+LINKEDIN,LinkedIn Jobs,job_board,false,https://www.linkedin.com/jobs/
+INDEED,Indeed,job_board,false,https://www.indeed.com/
+GREENHOUSE,Greenhouse ATS,ats_aggregator,true,https://boards.greenhouse.io/
+LEVER,Lever ATS,ats_aggregator,true,https://jobs.lever.co/
+ASHBY,Ashby ATS,ats_aggregator,true,https://jobs.ashbyhq.com/

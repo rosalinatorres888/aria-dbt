@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: fct_qualified_postings
+    description: >
+      Fact table of qualified job postings (match_score >= 0.50). Grain is one
+      row per posting. Joins to dim_source_performance via source_code.
+    columns:
+      - name: posting_id
+        description: Primary key — natural key from ARIA.
+        data_tests:
+          - not_null        # required test #1
+          - unique          # required test #2
+      - name: source_code
+        description: FK into dim_source_performance.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_source_performance')
+              field: source_code
+      - name: match_tier
+        description: Bucketed match_score for BI filtering.
+        data_tests:
+          - not_null
+          - accepted_values:                       # required test #3
+              values: ['top_tier', 'strong', 'moderate']
+              # NOTE: 'low' excluded because fct table filters match_score >= 0.50
+      - name: match_score
+        data_tests:
+          - not_null
+      - name: skill_match_count
+        data_tests:
+          - not_null
+
+  - name: dim_source_performance
+    description: >
+      Conformed dimension — one row per scraping source with pre-aggregated
+      KPIs. Powers source-comparison views in the Streamlit dashboard.
+    columns:
+      - name: source_code
+        description: Primary key. Natural key.
+        data_tests:
+          - not_null
+          - unique
+      - name: source_type
+        data_tests:
+          - accepted_values:
+              values: ['job_board', 'ats_aggregator']
+      - name: qualified_rate
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+              inclusive: true
+
+  - name: mart_skill_demand
+    description: >
+      Analytics mart — skill-level demand metrics over the qualified market.
+      Refreshed daily by the dbt build job after ARIA's nightly scrape.
+    columns:
+      - name: skill_name
+        data_tests:
+          - not_null
+      - name: skill_category
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['languages', 'data_engineering', 'ml', 'llm', 'visualization', 'infra', 'cloud']
+      - name: demand_count
+        data_tests:
+          - not_null

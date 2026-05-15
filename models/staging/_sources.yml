@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: aria_raw
+    description: >
+      Raw output from the ARIA autonomous job-intelligence pipeline (7-stage
+      ingestion → normalization → deduplication → enrichment → scoring →
+      warehousing → delivery). In production these live in MongoDB + SQLite;
+      for this dbt demo they're materialized from CSV seeds via `dbt seed`.
+    database: aria
+    schema: main
+    tables:
+      - name: raw_postings
+        description: One row per scraped job posting, post-normalization.
+        columns:
+          - name: posting_id
+            description: Surrogate key, format P-NNNNN. Stable across re-scrapes.
+            data_tests:
+              - not_null
+              - unique
+          - name: source_code
+            description: FK into raw_sources.
+            data_tests:
+              - not_null
+          - name: match_score
+            description: Semantic similarity to the 55-skill profile, 0-1.
+            data_tests:
+              - not_null
+      - name: raw_sources
+        description: Lookup table of the 5 job-board sources ARIA scrapes.
+        columns:
+          - name: source_code
+            data_tests:
+              - not_null
+              - unique
+              - accepted_values:
+                  values: ['LINKEDIN', 'INDEED', 'GREENHOUSE', 'LEVER', 'ASHBY']
+      - name: raw_skill_matches
+        description: One row per (posting, matched skill) — fact table grain.
+        columns:
+          - name: match_id
+            data_tests:
+              - not_null
+              - unique
+          - name: posting_id
+            data_tests:
+              - not_null
+              - relationships:
+                  to: source('aria_raw', 'raw_postings')
+                  field: posting_id

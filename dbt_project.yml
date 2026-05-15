@@ -1,0 +1,41 @@
+name: 'aria_warehouse'
+version: '1.0.0'
+config-version: 2
+
+# Profile defined in profiles.yml (DuckDB — zero-config local warehouse)
+profile: 'aria_warehouse'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Layer-aware materialization strategy:
+#   - staging: ephemeral views (cheap, no storage, always fresh)
+#   - marts:   physical tables (query-optimized for BI / downstream models)
+# Custom schemas omitted intentionally — keeps the local DuckDB demo simple.
+# In Snowflake/BigQuery this block would set per-layer schemas (raw/staging/marts).
+models:
+  aria_warehouse:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+# Seeds = sample ARIA pipeline output checked into the repo so anyone can
+# clone, run `dbt seed && dbt build`, and reproduce the warehouse end-to-end.
+seeds:
+  aria_warehouse:
+    raw_postings:
+      +column_types:
+        posting_id: VARCHAR
+        scraped_at: TIMESTAMP
+        posted_date: DATE
+        match_score: DECIMAL(5,3)

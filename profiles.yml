@@ -1,0 +1,13 @@
+# DuckDB profile — single-file local warehouse. Zero infra, fully reproducible.
+# In a production environment this would point to Snowflake or BigQuery; the
+# DuckDB target lets reviewers run the entire pipeline with `dbt build` and
+# no cloud credentials.
+aria_warehouse:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'aria.duckdb'
+      # threads=1 to serialize seed -> test ordering on local DuckDB.
+      # On Snowflake/BigQuery (production target) this would be 8-16.
+      threads: 1

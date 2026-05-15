@@ -1,0 +1,31 @@
+posting_id,source_code,job_title,company,location_raw,is_remote,posted_date,scraped_at,salary_min,salary_max,salary_currency,match_score,is_qualified,raw_description_chars
+P-00001,LINKEDIN,Senior Data Engineer,Stripe,"San Francisco, CA",true,2026-05-08,2026-05-10 06:00:00,180000,240000,USD,0.912,true,4218
+P-00002,INDEED,Analytics Engineer,Notion,"New York, NY",true,2026-05-09,2026-05-10 06:00:00,150000,195000,USD,0.874,true,3105
+P-00003,GREENHOUSE,Staff ML Engineer,Anthropic,"San Francisco, CA",false,2026-05-09,2026-05-10 06:00:00,310000,460000,USD,0.951,true,5840
+P-00004,LEVER,Data Engineer II,Samsara,"Remote, US",true,2026-05-07,2026-05-10 06:00:00,102000,154000,USD,0.823,true,4012
+P-00005,ASHBY,Data Engineer,ARB Interactive,"Remote, US",true,2026-05-10,2026-05-10 06:00:00,,,USD,0.901,true,3622
+P-00006,LINKEDIN,Junior Data Analyst,Wayfair,"Boston, MA",false,2026-05-06,2026-05-10 06:00:00,72000,94000,USD,0.412,false,2104
+P-00007,INDEED,Marketing Coordinator,Generic Co,"Boston, MA",false,2026-05-05,2026-05-10 06:00:00,55000,68000,USD,0.087,false,1820
+P-00008,LINKEDIN,ML Engineer NLP,Apple,"Cupertino, CA",false,2026-05-08,2026-05-10 06:00:00,170000,260000,USD,0.889,true,5210
+P-00009,GREENHOUSE,Analytics Engineer dbt,Hex,"Remote, US",true,2026-05-09,2026-05-10 06:00:00,160000,210000,USD,0.928,true,4540
+P-00010,LEVER,Senior Data Scientist,Spotify,"New York, NY",true,2026-05-04,2026-05-10 06:00:00,180000,230000,USD,0.804,true,4115
+P-00011,LINKEDIN,Data Visualization Engineer,Tradeweb,"Jersey City, NJ",true,2026-05-08,2026-05-10 06:00:00,120000,240000,USD,0.751,true,3990
+P-00012,ASHBY,LLM Systems Engineer,Cohere,"Remote, Canada",true,2026-05-09,2026-05-10 06:00:00,,,CAD,0.913,true,4421
+P-00013,INDEED,Data Engineer (Entry),Milliman MedInsight,"Remote, US",true,2026-05-07,2026-05-10 06:00:00,71000,132000,USD,0.886,true,3210
+P-00014,GREENHOUSE,Software Engineer Backend,Datadog,"Boston, MA",false,2026-05-06,2026-05-10 06:00:00,150000,200000,USD,0.541,false,3850
+P-00015,LEVER,Customer Success Manager,Tableau,"Remote, US",true,2026-05-05,2026-05-10 06:00:00,85000,120000,USD,0.094,false,2440
+P-00016,LINKEDIN,Data Engineer Encounters,AcuityMD,"Remote, US",true,2026-05-10,2026-05-10 06:00:00,155000,210000,USD,0.821,true,4612
+P-00017,ASHBY,AI Automation Engineer,Alpha Omega,"Vienna, VA",false,2026-05-09,2026-05-10 06:00:00,75000,110000,USD,0.892,true,3120
+P-00018,INDEED,Data Engineer,Edmunds,"Remote, US",true,2026-05-07,2026-05-10 06:00:00,125000,159000,USD,0.722,true,4218
+P-00019,LINKEDIN,ML Platform Engineer,Pinterest,"San Francisco, CA",true,2026-05-08,2026-05-10 06:00:00,200000,290000,USD,0.881,true,4980
+P-00020,GREENHOUSE,Analytics Engineer,Vercel,"Remote, US",true,2026-05-09,2026-05-10 06:00:00,165000,215000,USD,0.917,true,4310
+P-00021,LEVER,Junior Data Engineer,Toast,"Boston, MA",true,2026-05-06,2026-05-10 06:00:00,90000,125000,USD,0.842,true,3650
+P-00022,LINKEDIN,Staff Software Engineer,Meta,"Menlo Park, CA",false,2026-05-08,2026-05-10 06:00:00,280000,420000,USD,0.612,false,5180
+P-00023,ASHBY,LLM Evaluation Engineer,Scale AI,"San Francisco, CA",true,2026-05-09,2026-05-10 06:00:00,180000,260000,USD,0.901,true,4720
+P-00024,INDEED,Data Engineer Snowflake dbt,Edgio,"Remote, US",true,2026-05-07,2026-05-10 06:00:00,130000,175000,USD,0.896,true,3940
+P-00025,LINKEDIN,Senior Data Analyst,HubSpot,"Cambridge, MA",false,2026-05-05,2026-05-10 06:00:00,110000,150000,USD,0.681,true,3220
+P-00026,GREENHOUSE,Founding Data Engineer,Modal Labs,"Remote, US",true,2026-05-09,2026-05-10 06:00:00,180000,260000,USD,0.934,true,4810
+P-00027,LEVER,RAG Systems Engineer,Glean,"Palo Alto, CA",true,2026-05-08,2026-05-10 06:00:00,200000,290000,USD,0.922,true,4630
+P-00028,LINKEDIN,Data Engineer,Klaviyo,"Boston, MA",true,2026-05-07,2026-05-10 06:00:00,140000,180000,USD,0.864,true,3870
+P-00029,ASHBY,Bilingual Data Annotator,Surge AI,"Remote, US",true,2026-05-06,2026-05-10 06:00:00,60000,85000,USD,0.731,true,2980
+P-00030,INDEED,Marketing Analyst,Generic Retail,"Boston, MA",false,2026-05-05,2026-05-10 06:00:00,55000,70000,USD,0.121,false,1980

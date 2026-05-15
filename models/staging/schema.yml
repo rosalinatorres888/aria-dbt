@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: stg_postings
+    description: >
+      Cleaned, type-cast posting facts. One row per scraped posting.
+      Added: days_since_posted, salary_midpoint, match_tier.
+    columns:
+      - name: posting_id
+        description: Natural key from ARIA pipeline.
+        data_tests:
+          - not_null
+          - unique
+      - name: source_code
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sources')
+              field: source_code
+      - name: match_score
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+              inclusive: true
+      - name: match_tier
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['top_tier', 'strong', 'moderate', 'low']
+
+  - name: stg_sources
+    description: Lookup of the 5 ARIA scraping sources.
+    columns:
+      - name: source_code
+        data_tests:
+          - not_null
+          - unique
+      - name: source_type
+        data_tests:
+          - accepted_values:
+              values: ['job_board', 'ats_aggregator']
+
+  - name: stg_skill_matches
+    description: One row per (posting, skill) match emitted by ARIA.
+    columns:
+      - name: match_id
+        data_tests:
+          - not_null
+          - unique
+      - name: posting_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_postings')
+              field: posting_id
+      - name: skill_category
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['languages', 'data_engineering', 'ml', 'llm', 'visualization', 'infra', 'cloud']

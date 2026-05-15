@@ -1,0 +1,47 @@
+name: dbt build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  dbt-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dbt
+        run: |
+          pip install --upgrade pip
+          pip install dbt-core==1.11.10 dbt-duckdb==1.11.0
+
+      - name: Install dbt packages
+        run: dbt deps
+        env:
+          DBT_PROFILES_DIR: ${{ github.workspace }}
+
+      - name: dbt build (seed + run + test)
+        run: dbt build --threads 1
+        env:
+          DBT_PROFILES_DIR: ${{ github.workspace }}
+
+      - name: dbt docs generate
+        run: dbt docs generate
+        env:
+          DBT_PROFILES_DIR: ${{ github.workspace }}
+
+      - name: Upload dbt artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dbt-target
+          path: target/
+          retention-days: 7
