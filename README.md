@@ -14,7 +14,7 @@ This repo takes ARIA's raw pipeline output and shapes it into a **dimensionally-
 ## TL;DR
 
 ```bash
-git clone https://github.com/<you>/aria-dbt && cd aria-dbt
+git clone https://github.com/rosalinatorres888/aria-dbt && cd aria-dbt
 pip install dbt-core dbt-duckdb
 dbt deps
 dbt build                  # seeds → models → tests, 55 nodes, ~1.5s
