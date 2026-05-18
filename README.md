@@ -80,8 +80,6 @@ duckdb aria.duckdb
 
 ## Dimensional modeling decisions
 
-This is the part recruiters care about — *why* each choice was made.
-
 ### 1. Two-layer model (staging → marts), not three
 
 I deliberately **skipped an intermediate layer**. ARIA's source data is already lightly cleaned upstream (deduplication, normalization happen in the Python pipeline before dbt sees it), so a Snowflake-style `raw → base → staging → intermediate → marts` would have been busywork.
